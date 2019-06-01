@@ -37,14 +37,18 @@ public class Demo1 {
         SqlSessionFactory sessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
 
 
-        SqlSession session = sessionFactory.openSession();
+        SqlSession sqlSession = sessionFactory.openSession();
         
 
-        LearnResourceMapper mapper = session.getMapper(LearnResourceMapper.class);
+        LearnResourceMapper mapper = sqlSession.getMapper(LearnResourceMapper.class);
+
         LearnResource learnResource = mapper.selectByPrimaryKey(999L);
         System.out.println(learnResource);
 
-        session.close();
+        Object o = sqlSession.selectOne("com.learn.mybatis.mapper.LearnResourceMapper.selectByPrimaryKey", 999L);
+
+        System.out.println(o);
+        sqlSession.close();
     }
 
 
