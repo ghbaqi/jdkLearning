@@ -9,14 +9,8 @@ import java.util.concurrent.locks.ReentrantLock;
  */
 public class Demo01 {
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
         ReentrantLock lock = new ReentrantLock();
-        System.out.println("1111");
         lock.lock();
-        System.out.println("2222");
-        Thread.sleep(3000);
-        lock.unlock();
-
-        System.out.println("333");
     }
 }
